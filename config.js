@@ -23,7 +23,13 @@ module.exports = {
         password: SQL_PASSWORD,
         options: {
             encrypt: sqlEncrypt,
-            enableArithAbort: true
+            enableArithAbort: true,
+            connectionTimeout: 300000,
+            requestTimeout: 300000,
+            pool: {
+                idleTimeoutMillis: 300000,
+                max: 100
+              }
         },
     },
 };
