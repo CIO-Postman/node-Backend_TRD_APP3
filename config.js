@@ -18,6 +18,7 @@ module.exports = {
     url: HOST_URL,
     sql: {
         server: SQL_SERVER,
+        port: 4070,
         database: SQL_DATABASE,
         user: SQL_USER,
         password: SQL_PASSWORD,
