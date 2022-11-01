@@ -8,8 +8,8 @@ const router = express.Router();
 //router.put('/province/:id', controllers.upd);
 //router.delete('/province/:id', controllers.del);
 
-router.get('/branch', controllers.sel);
-router.get('/branchByPK/:id', controllers.selByPK);
+router.get('/SearchChangwat', controllers.sel);
+router.get('/SearchChangwatbystCode/:id', controllers.selByPK);
 // router.get('/provinceByCountry/:id', controllers.selByCountry);
 // router.get('/provinceByStatus/:id', controllers.selByStatus);
 
