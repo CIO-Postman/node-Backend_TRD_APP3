@@ -35,11 +35,25 @@ const selByCWCode = async (data) => {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('MASTER/AMPHUR');
         const result = await pool.request()
-        .input('CHANGWAT_CODE', sql.Char(2), data.CHANGWAT_CODE)
-        .query(sqlQueries.selByCWCode);                            
-        return result.recordset;
+        .input('CHANGWAT_CODE', sql.VarChar(2), data.CHANGWAT_CODE)
+        .query(sqlQueries.selByCWCode);    
+        console.log(result.recordset[0].CHANGWAT_CODE, 'rrrrrrrrrrrrrrrrrrrr')                        
+        // return result.recordset;
+        let output = {
+            status: "200",
+            message: "success",
+            result: result.recordset,
+            error : null
+         } 
+         return(output)
     } catch (error) {
-        return error.message;
+        let data = {
+            status: "404",
+            message: "ไม่พบข้อมูล",
+            result: "",
+            error : error.message 
+        }
+        return (data);
     }
 }
 

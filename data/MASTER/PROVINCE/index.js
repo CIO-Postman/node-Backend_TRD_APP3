@@ -35,11 +35,18 @@ const selByCWCode = async (data) => {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('MASTER/PROVINCE');
         const result = await pool.request()
-        .input('CHANGWAT_CODE', sql.Char(2), data.CHANGWAT_CODE)
-        .query(sqlQueries.selByCWCode);                            
+        .input('CHANGWAT_CODE', sql.VarChar(3), data.CHANGWAT_CODE)
+        .query(sqlQueries.selByCWCode); 
+        console.log(result.recordset[0].CHANGWAT_CODE, 'yyyyyyyyyyyyyyyyyyyyy')                           
         return result.recordset;
     } catch (error) {
-        return error.message;
+        let data = {
+            status: "404",
+            message: "ไม่พบข้อมูล",
+            result: "",
+            error : ""   
+        }
+        return (data);
     }
 }
 

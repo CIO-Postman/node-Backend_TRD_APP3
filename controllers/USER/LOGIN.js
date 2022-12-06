@@ -7,7 +7,12 @@ const sel = async (req, res, next) => {
     try {
         const data = req.body;
         const info = await query.sel(data);
-        res.send(info);
+        res.send(info);       
+        // if(res = ''){
+        //     res.send("404");
+        // }else{
+        //     res.send(info);
+        // }
     } catch (error) {
         res.status(400).send(error.message);
     }
