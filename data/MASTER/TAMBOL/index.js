@@ -19,11 +19,25 @@ const selByACCode = async (data) => {
     }
 }
 
-
+const BoundaryTambol = async (data) => {
+    try {
+        let pool = await sql.connect(config.sql);
+        const sqlQueries = await utils.loadSqlQueries('MASTER/TAMBOL');
+        const result = await pool.request()
+        .input('PRO_C', sql.Char(2), data.PRO_C)
+        .input('DIS_C', sql.Char(2), data.DIS_C)
+        .input('PRO_C', sql.Char(2), data.PRO_C)
+        .query(sqlQueries.BoundaryTambol);                            
+        return result.recordset;
+    } catch (error) {
+        return error.message;
+    }
+}
 
 module.exports = {
 
-    selByACCode 
+    selByACCode,
+    BoundaryTambol
 }
 
 

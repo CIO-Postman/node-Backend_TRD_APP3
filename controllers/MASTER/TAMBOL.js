@@ -13,7 +13,18 @@ const selByACCode = async (req, res, next) => {
     }
 }
 
+const BoundaryTambol = async (req, res, next) => {
+    try {
+        const data = req.body;
+        const info = await query.BoundaryTambol(data);
+        res.send(info);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 module.exports = {
 
-    selByACCode
+    selByACCode,
+    BoundaryTambol
 }

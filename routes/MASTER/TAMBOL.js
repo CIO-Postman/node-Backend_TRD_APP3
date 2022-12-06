@@ -10,6 +10,7 @@ const router = express.Router();
 
 //router.get('/SearchAllChangwat', controllers.sel);
 router.post('/SearchTambol', controllers.selByACCode);
+router.post('/BoundaryTambol', controllers.BoundaryTambol);
 //router.get('/Search/:id', controllers.selByCode);
 // router.get('/SearchChangwatbystCode/:id', controllers.selByPK);
 // router.get('/provinceByCountry/:id', controllers.selByCountry);
