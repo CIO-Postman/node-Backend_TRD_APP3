@@ -34,43 +34,43 @@ const selByACCode = async (data) => {
     }
 }
 
-const BoundaryMunisan = async (data) => {
-    try {
-        let pool = await sql.connect(config.sql);
-        const sqlQueries = await utils.loadSqlQueries('MASTER/MUNISAN');
-        const result = await pool.request()
-        .input('AD_CHANGWA', sql.Char(2), data.AD_CHANGWA)
-        .input('AD_AMPHOE', sql.Char(2), data.AD_AMPHOE)
-        .input('MUNISAN_ID', sql.Char(11), data.MUNISAN_ID)
-        .query(sqlQueries.BoundaryMunisan);  
-        console.log(result.recordset[0].AD_CHANGWA, 'ttttttttttttttttttttttttt') 
-        console.log(result.recordset[0].AD_AMPHOE, 'yyyyyyyyyyyyyyyyyyyyyyyyyy')
-        console.log(result.recordset[0].MUNISAN_ID, 'mmmmmmmmmmmmmmmmmmmmm')                              
-        // return result.recordset;
-        let output = {
-            status: "200",
-            message: "success",
-            result: result.recordset,
-            error : null
-         } 
-         return(output)    
-    } catch (error) {
-        let data = {
-            status: "404",
-            message: "ไม่พบข้อมูล",
-            result: "",
-            error : error.message    
-        }
-        return (data);
-    }
-}
+// const BoundaryMunisan = async (data) => {
+//     try {
+//         let pool = await sql.connect(config.sql);
+//         const sqlQueries = await utils.loadSqlQueries('MASTER/MUNISAN');
+//         const result = await pool.request()
+//         .input('AD_CHANGWA', sql.Char(2), data.AD_CHANGWA)
+//         .input('AD_AMPHOE', sql.Char(2), data.AD_AMPHOE)
+//         .input('MUNISAN_ID', sql.Char(11), data.MUNISAN_ID)
+//         .query(sqlQueries.BoundaryMunisan);  
+//         console.log(result.recordset[0].AD_CHANGWA, 'ttttttttttttttttttttttttt') 
+//         console.log(result.recordset[0].AD_AMPHOE, 'yyyyyyyyyyyyyyyyyyyyyyyyyy')
+//         console.log(result.recordset[0].MUNISAN_ID, 'mmmmmmmmmmmmmmmmmmmmm')                              
+//         // return result.recordset;
+//         let output = {
+//             status: "200",
+//             message: "success",
+//             result: result.recordset,
+//             error : null
+//          } 
+//          return(output)    
+//     } catch (error) {
+//         let data = {
+//             status: "404",
+//             message: "ไม่พบข้อมูล",
+//             result: "",
+//             error : error.message    
+//         }
+//         return (data);
+//     }
+// }
 
 
 
 module.exports = {
 
-    selByACCode,
-    BoundaryMunisan
+    selByACCode
+    // ,BoundaryMunisan
 }
 
 
